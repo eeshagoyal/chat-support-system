@@ -1,5 +1,6 @@
 # chat-support-system
 This is a Rule Based Chat Bot and does not employee Natural Language Processing.
+All the Text Queries are stored in a CSV file and are automatically accessed by the chatbot script.
 
 ## Build Instructions
 	1. Open 3 separate Bash Terminal windows
@@ -11,7 +12,11 @@ This is a Rule Based Chat Bot and does not employee Natural Language Processing.
 	7. If query does not exist in the set list of queries, the client query will be forwarded to the third window ie- human support. 
 	8. The client and client support team can then take part in a real time chat 
 
-
+## Note 
+	socket.error: [Errno 48] Address already in use
+	sudo lsof -i:5000
+	kill listed PID
+	
 ## References 
 - https://medium.com/botsupply/rule-based-bots-vs-ai-bots-b60cdb786ffa
 - https://www.geeksforgeeks.org/simple-chat-room-using-python/

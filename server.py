@@ -11,7 +11,7 @@ with any two hosts
 The second argument is the type of socket. SOCK_STREAM means that data or characters are read in a continuous flow
 """
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.bind(('127.0.0.1', 65432))#((IP_address, Port)) 
+server.bind(('localhost', 8080))#((IP_address, Port)) 
 #binds the server to an entered IP address and at the specified port number. The client must be aware of these parameters
 
 server.listen(100)
