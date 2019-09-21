@@ -11,38 +11,31 @@ with any two hosts
 The second argument is the type of socket. SOCK_STREAM means that data or characters are read in a continuous flow
 """
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-#if len(sys.argv) != 3:
-#    print "Correct usage: script, IP address, port number"
-#    exit()
-#IP_address = str(sys.argv[1])
-#Port = int(sys.argv[2])
 server.bind(('127.0.0.1', 65432))#((IP_address, Port)) 
 #binds the server to an entered IP address and at the specified port number. The client must be aware of these parameters
+
 server.listen(100)
 #listens for 100 active connections. This number can be increased as per convenience
 list_of_clients=[]
 
-
-dictionary = text_queries().getquery() #new
+dictionary = text_queries().getquery() 
 
 def clientthread(conn, addr):
     conn.send("Welcome to this chatroom!")
     #sends a message to the client whose user object is conn
     while True:
             try:     
-                message = conn.recv(2048)    
+                message = conn.recv(2048)
+                message = message[:-1]
+                # remove the extra new line character 
                 if message:
-                    print message
+                    print (message)
                     #prints the message and address of the user who just sent the message on the server terminal
 
-                    print type(message)
-                    print type(dictionary)
-                    print dictionary.has_key(str(message))
-                    print "\n\n"
-                    if dictionary.has_key(str(message)):
-                    #if message in list(dictionary.keys()):
-                        print "<Server> : " + dictionary[message]
-                        conn.send("<Server> : " + dictionary[message])       
+                    if dictionary.get(message[11:]):
+                        # message[11:-1] remove the first 11 characters "< Team > : " or "<Client> : "
+                        print ("<Server> : " + dictionary[message[11:]])
+                        conn.send("<Server> : " + dictionary[message[11:]])       
 
                     else :
                         message_to_send = message 
@@ -72,8 +65,8 @@ while True:
     the IP address of the client that just connected
     """
     list_of_clients.append(conn)
-    print addr[0] + " connected"
     #maintains a list of clients for ease of broadcasting a message to all available people in the chatroom
+    print (addr[0] + " connected")
     #Prints the address of the person who just connected
     start_new_thread(clientthread,(conn,addr))
     #creates and individual thread for every user that connects

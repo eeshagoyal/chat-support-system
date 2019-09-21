@@ -1,17 +1,13 @@
 import socket
 import select
 import sys
-#from text_queries import text_queries #new
+from text_queries import text_queries 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#if len(sys.argv) != 3:
-#    print "Correct usage: script, IP address, port number"
-#    exit()
-#IP_address = str(sys.argv[1])
-#Port = int(sys.argv[2])
-server.connect(('127.0.0.1', 65432))#((IP_address, Port))
-
-#dictionary = text_queries().getquery() #new
+server.connect(('127.0.0.1', 65432))
+dictionary = text_queries().getquery() 
+print "You can ask the following types of queries : "
+print dictionary.keys()
 
 while True:
     # maintains a list of possible input streams 
@@ -31,15 +27,12 @@ while True:
     for socks in read_sockets:
         if socks == server:
             message = socks.recv(2048)
-            #print dictionary.keys() #new
-            #if dictionary.has_key(str(message)): #new
-                #message = dictionary[message] #new
-            print message
+            print (message)
         else:
             message = sys.stdin.readline()
-            #if message in list(dictionary.keys()): #new
-                #message = dictionary[message] #new
-            server.send(message)#"<Client> : "+ 
-            #sys.stdout.write("<You> : ")
+            server.send("<Client> : "+message) 
             sys.stdout.flush()
 server.close()
+
+
+

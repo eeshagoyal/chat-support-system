@@ -3,16 +3,19 @@ class text_queries():
 	def __init__(self):
 		self.data = {
 
-			"Who are you?": "Hi! I am FinHawk customer support",
+			"Hello":"Hello",
 
-			"Tell me about FinHawk": "It is the best available online solution for people who want to enter into stock trading market",
+			"What do you do?": "I am a chatbot. I will try my best to solve your queries.",
 
-			"Who are the founders?": "It's Abhipriya Gupta and Abhishek Batra",
+			"Tell me about FinHawk": "FinHawk is a tech start up which aims to be your one stop solution to all things finance. It provides you with consolidated information and advice about the stock market. ",
 
-			"What does FinHawk do?": "We're building an ecosystem to help people achieve their financial goals in an educated and informed way.",
+			"Who are the founders?": "Abhipriya Gupta and Abhishek Batra",
 
-			"Where can I find FinHawk on the internet?": "You can find us on angel.co"
+			"Are you available on Play Store?": "We are still in the initial development phase but we will be there really soon.",
 
+			"How to apply?": "Connect with us on LinkedIn",
+
+			"What is your product?" : "AI powered Web Application",
 		}
 
 	def getquery(self):
