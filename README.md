@@ -1,8 +1,10 @@
 # chat-support-system
 This is a Rule Based Chat Bot and does not employee Natural Language Processing.
 All the Text Queries are stored in a CSV file and are automatically accessed by the chatbot script.
+## Pre requisites 
+	Python 2.7.15
 
-## Build Instructions
+## Instructions
 	1. Open 3 separate Bash Terminal windows
 	2. On first window run "python server.py"
 	3. On second window run "python client.py"
